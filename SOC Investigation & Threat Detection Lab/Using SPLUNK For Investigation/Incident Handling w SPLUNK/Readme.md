@@ -1,4 +1,4 @@
-#  SOC Investigation — Attack Lifecycle Analysis (Splunk BOTS v1)
+#  SOC Investigation — Attack Lifecycle Analysis 
 
 ---
 
@@ -92,4 +92,5 @@ This project demonstrates a **SOC investigation using Splunk (BOTS v1 dataset)**
 SOC Investigation • Threat Hunting • Splunk Analysis • OSINT Pivoting • MITRE Mapping • Incident Reporting
 
 ---
+
 
