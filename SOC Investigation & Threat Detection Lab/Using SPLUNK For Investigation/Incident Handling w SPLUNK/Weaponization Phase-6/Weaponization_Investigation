@@ -1,0 +1,133 @@
+#  Weaponization Phase – OSINT & Adversary Infrastructure Analysis
+
+---
+
+##  Phase Objective
+
+In the **Weaponization phase**, attackers prepare resources required to launch and sustain the attack.
+
+This includes:
+- Creating malware or payloads
+- Registering look-alike domains (typosquatting)
+- Setting up Command & Control infrastructure
+- Preparing phishing or malicious delivery mechanisms
+
+During the investigation of the `imreallynotbatman.com` compromise, we identified attacker infrastructure that warranted further **OSINT enrichment**.
+
+---
+
+##  Known Malicious Infrastructure
+
+| Type | Value |
+|------|------|
+| C2 Domain | prankglassinebracket.jumpingcrab.com |
+| Attacker IP | 23.22.63.114 |
+
+---
+
+##  Step 1 — Threat Intelligence Lookup (Robtex)
+
+**Tool Used:** Robtex  
+**Reference:** https://www.robtex.com/ip-lookup/23.22.63.114  
+
+###  Purpose
+- Identify domains hosted on attacker IP
+- Discover attacker infrastructure reuse
+- Detect typosquatting domains targeting Wayne Enterprises
+
+###  Findings
+Robtex revealed multiple domains hosted on the same IP that closely resemble the Wayne Enterprises brand.
+
+This indicates:
+- Infrastructure reuse by attacker
+- Pre-staged phishing / deception domains
+- Possible multi-stage attack campaign
+
+---
+
+##  Step 2 — VirusTotal Infrastructure Analysis
+
+**Tool Used:** VirusTotal  
+
+###  Purpose
+- Identify domain relationships
+- Correlate attacker IP with additional malicious domains
+- Expand threat intelligence context
+
+###  Findings
+Under the **Relations** tab for IP `23.22.63.114`, a suspicious typosquatting domain was discovered:
+
+```
+www.po1s0n1vy.com
+```
+
+This domain:
+- Mimics Poison Ivy reference used in defacement artifact
+- Suggests attacker branding/theme
+- Indicates phishing or payload delivery infrastructure
+
+---
+
+##  Step 3 — WHOIS Analysis
+
+**Tool Used:** DomainTools WHOIS  
+**Reference:** https://whois.domaintools.com  
+
+###  Purpose
+- Identify registration patterns
+- Discover attacker identity indicators
+- Correlate domains via registrar, email, or nameserver reuse
+
+###  Expected Intelligence
+WHOIS data can reveal:
+- Domain registration email reuse
+- Registrar and hosting provider patterns
+- Domain creation timeline
+- Potential attribution clues
+
+---
+
+##  Investigation Summary
+
+| Evidence Type | Finding |
+|---------------|--------|
+| Attacker IP | 23.22.63.114 |
+| Primary C2 Domain | prankglassinebracket.jumpingcrab.com |
+| Typosquatting Domain | www.po1s0n1vy.com |
+| Attack Pattern | Infrastructure reuse + brand impersonation |
+| Threat Category | Weaponized attacker infrastructure |
+
+---
+
+##  MITRE ATT&CK Mapping
+
+| Tactic | Technique | ID |
+|-------|-----------|----|
+| Resource Development | Acquire Infrastructure | T1583 |
+| Resource Development | Domain Registration | T1583.001 |
+| Resource Development | Compromise Infrastructure | T1584 |
+| Command & Control | Dynamic Resolution | T1568 |
+| Initial Access | Phishing via Look-alike Domains | T1566 |
+
+---
+
+## Lessons Learned
+
+- Attackers often reuse IP infrastructure across multiple campaigns
+- Typosquatting domains are strong indicators of phishing preparation
+- OSINT enrichment strengthens attribution and detection capabilities
+- VirusTotal Relations tab is powerful for infrastructure mapping
+- WHOIS pivoting can uncover hidden attacker patterns
+
+---
+
+##  Detection & Prevention Improvements
+
+- Monitor look-alike domain registrations for brand impersonation
+- Integrate threat intelligence feeds into SIEM
+- Block known malicious IP infrastructure proactively
+- Implement domain monitoring for typosquatting detection
+- Use passive DNS telemetry for attacker infrastructure tracking
+- Automate OSINT enrichment during SOC investigations
+
+---
