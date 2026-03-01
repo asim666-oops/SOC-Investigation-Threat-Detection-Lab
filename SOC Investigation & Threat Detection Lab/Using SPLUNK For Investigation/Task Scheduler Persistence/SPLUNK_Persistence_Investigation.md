@@ -37,7 +37,7 @@ To determine:
 index="win-alert" EventCode=4698 AssessmentTaskOne
 | table _time EventCode user_name host Task_Name Message
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Task%20Scheduler%20Persistence/Screenshots/img1.jpeg)
 ## Finding
 
 A scheduled task named `\AssessmentTaskOne` was created by:
@@ -54,6 +54,8 @@ Event 4698 confirms **Scheduled Task Creation**.
 The XML content inside the `Message` field was reviewed to determine task behavior.
 
 ---
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Task%20Scheduler%20Persistence/Screenshots/img1.1.jpeg)
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Task%20Scheduler%20Persistence/Screenshots/img1.2.jpeg)
 
 ##  Triggers Section Analysis
 
@@ -140,7 +142,7 @@ ParentProcessId: 4128
 ```spl
 index=win-alert ProcessId=5816 AssessmentTaskOne
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Task%20Scheduler%20Persistence/Screenshots/img2.jpeg)
 ### Result
 
 Parent Process: **cmd.exe**
@@ -155,7 +157,7 @@ Parent Process: **cmd.exe**
 index=win-alert ComputerName=WIN-H015 ParentProcessId=4128
 | table _time ParentCommandLine CommandLine
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Task%20Scheduler%20Persistence/Screenshots/img3.jpeg)
 ### Result
 
 ```
@@ -187,7 +189,7 @@ To determine the origin of the login:
 ```spl
 index=win-alert EventCode=4624 workstation_name="Dev-QA-SERVER" Account_Name="oliver.thompson"
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Task%20Scheduler%20Persistence/Screenshots/img4.jpeg)
 ### Finding
 
 Workstation Name:
@@ -254,19 +256,6 @@ schtasks /delete /tn "AssessmentTaskOne" /f
 - Reset compromised credentials  
 
 ---
-
-## Further Investigation
-
-Check for:
-
-- Lateral movement attempts  
-- Additional scheduled tasks  
-- Newly created admin accounts  
-- Suspicious services  
-- Network connections to port 9876  
-
----
-
 #  Lessons Learned
 
 - Monitor Event ID 4698 (Scheduled Task Creation)  
@@ -302,3 +291,4 @@ The attacker leveraged:
 - **SOC Level:** Escalated to L2 / Incident Response  
 - **Severity:** High  
 - **Status:** Active Investigation / Containment Required  
+
