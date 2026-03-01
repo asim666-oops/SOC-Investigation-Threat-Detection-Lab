@@ -34,6 +34,7 @@ and winlog.event_id:4624
 and host.name:winserv2019.some.corp 
 and winlog.event_data.TargetUserName:Administrator
 ```
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20ELK%20%20For%20Investigation/AccountActivity_Persistence/Screenshots/img1.1.jpeg)
 
 ## Fields Added to Table
 
@@ -65,7 +66,7 @@ and winlog.event_data.TargetUserName:Administrator
 and winlog.event_id:1 
 and user.name:Administrator
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20ELK%20%20For%20Investigation/AccountActivity_Persistence/Screenshots/img1.2.jpeg)
 ## Fields Added
 
 - user.name  
@@ -106,7 +107,7 @@ and user.name:Administrator
 and winlog.channel:Security 
 and winlog.task:"User Account Management"
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20ELK%20%20For%20Investigation/AccountActivity_Persistence/Screenshots/img2.1.jpeg)
 ##  Fields Added
 
 - winlog.event_id  
@@ -185,3 +186,4 @@ Immediate containment and credential reset are recommended.
 - SOC escalation reporting  
 
 ---
+
