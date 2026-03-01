@@ -34,7 +34,7 @@ Determine whether the suspicious **cmd.exe usage** indicates:
 and process.parent.name:cmd.exe 
 and user.name:Administrator
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20ELK%20%20For%20Investigation/CommadLine%20behavior/screenshots/img1.jpeg)
 ##  Fields Added
 
 - process.command_line  
@@ -61,7 +61,7 @@ and user.name:Administrator
 @timestamp >= "2025-07-20T05:13:15" 
 and (winlog.event_id:4732 or process.parent.name:cmd.exe)
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20ELK%20%20For%20Investigation/CommadLine%20behavior/screenshots/img2.jpeg)
 ##  Fields Added
 
 - winlog.event_id  
@@ -90,7 +90,7 @@ and (winlog.event_id:4732 or process.parent.name:cmd.exe)
 and event.module:powershell 
 and event.code:4104
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20ELK%20%20For%20Investigation/CommadLine%20behavior/screenshots/img3.jpeg)
 ##  Field Added
 
 - powershell.file.script_block_text  
@@ -177,3 +177,4 @@ Following successful Administrator compromise, the attacker executed CMD command
 - SOC escalation reporting  
 
 ---
+
