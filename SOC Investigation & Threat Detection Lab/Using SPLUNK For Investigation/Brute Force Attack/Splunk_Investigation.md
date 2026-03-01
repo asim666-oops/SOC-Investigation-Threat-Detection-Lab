@@ -35,7 +35,7 @@ To determine whether the detected login activity from source IP 10.10.242.248 wa
 index="linux-alert" sourcetype="linux_secure" Hostname=tryhackme-2404
 | stats count by user_name
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Brute%20Force%20Attack/Screenshots/img3.jpeg)
 ###  Purpose
 
 - Identify which users had login activity on the target host  
@@ -52,7 +52,7 @@ index="linux-alert" sourcetype="linux_secure" 10.10.242.248
 ("Failed password" OR "Accepted password" OR "Invalid user") 
 | sort -_time
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Brute%20Force%20Attack/Screenshots/img2.jpeg)
 ###  Purpose
 
 - Check for brute force patterns  
@@ -71,7 +71,7 @@ index="linux-alert" sourcetype="linux_secure" 10.10.242.248
 ("Invalid user") 
 | sort -_time
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Brute%20Force%20Attack/Screenshots/img2.jpeg)
 ###  Purpose
 
 - Identify login attempts using non-existent accounts  
@@ -94,7 +94,7 @@ index="linux-alert" sourcetype="linux_secure" 10.10.242.248 john.smith
 | eval process="sshd"
 | stats count by user_name, action, Hostname, src
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Brute%20Force%20Attack/Screenshots/img1.jpeg)
 ###  Purpose
 
 - Count login attempts for john.smith  
@@ -118,7 +118,7 @@ Confirms successful brute force attack
 index="linux-alert" sourcetype="linux_secure"
 john.smith sudo
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Brute%20Force%20Attack/Screenshots/img6.jpeg)
 ###  Purpose
 
 - Determine whether the compromised account executed sudo commands  
@@ -139,8 +139,8 @@ john.smith sudo
 index="linux-alert" sourcetype="linux_secure" root 
 (*Adduser*)
 ```
-
-###  Purpose
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Brute%20Force%20Attack/Screenshots/img7.jpeg)
+###  Purpos
 
 - Identify if attacker escalated privileges to root  
 - Detect new user creation (persistence mechanism)  
@@ -219,3 +219,4 @@ Persistence mechanism established
 - SOC investigation workflow  
 
 ---
+
