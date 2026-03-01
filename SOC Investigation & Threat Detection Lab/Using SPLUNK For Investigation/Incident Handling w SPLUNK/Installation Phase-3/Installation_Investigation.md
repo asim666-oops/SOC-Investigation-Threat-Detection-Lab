@@ -20,7 +20,7 @@ This phase investigates whether any malicious payload was uploaded and executed 
 ```
 index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" *.exe
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Installation%20Phase-3/Screenshots/img1.jpeg)
 **Purpose**
 - Detect HTTP uploads containing executable files
 - Identify potential malware payload delivery
@@ -40,7 +40,7 @@ To confirm upload origin:
 ```
 index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" "part_filename{}"="3791.exe"
 ```
-
+![Query]([link-to-image](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Installation%20Phase-3/Screenshots/img2.jpeg))
 **Finding**
 - File uploaded from attacker infrastructure (confirmed via client IP field)
 
@@ -54,7 +54,7 @@ To determine whether the uploaded file appeared in host logs:
 ```
 index=botsv1 "3791.exe"
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Installation%20Phase-3/Screenshots/img3.jpeg)
 **Host-Centric Log Sources Identified**
 - Sysmon
 - WinEventLog
@@ -70,7 +70,7 @@ Sysmon **EventCode=1** represents process creation.
 ```
 index=botsv1 "3791.exe" sourcetype="XmlWinEventLog" EventCode=1
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Installation%20Phase-3/Screenshots/img4.jpeg)
 **Conclusion**
 - The executable **3791.exe** was successfully executed on the compromised host
 - Confirms transition from exploitation → installation phase
@@ -118,5 +118,6 @@ index=botsv1 "3791.exe" sourcetype="XmlWinEventLog" EventCode=1
 - Deploy EDR rules for suspicious process creation by service accounts
 - Implement application allowlisting on servers
 - Automate hash reputation checks with threat intelligence feeds
+
 
 ---
