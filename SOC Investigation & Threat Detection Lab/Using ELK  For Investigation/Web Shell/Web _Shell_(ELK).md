@@ -40,7 +40,7 @@ Determine whether web requests from **203.0.113.55** indicate exploitation of Ex
 ```kql
 _index:weblogs and client.ip:203.0.113.55 and http.request.method:POST
 ```
-
+![Query ](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20ELK%20%20For%20Investigation/Web%20Shell/Screenshots/Alert%201.1.jpeg)
 ##  Table Columns Added
 
 - client.ip  
@@ -85,7 +85,7 @@ _index:weblogs and client.ip:203.0.113.55 and http.request.method:POST
 ```kql
 _index:weblogs and client.ip:203.0.113.55 and http.request.method:GET and errorEE.aspx
 ```
-
+![Query ](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20ELK%20%20For%20Investigation/Web%20Shell/Screenshots/Alert%202.1.jpeg)
 ## Investigation Actions
 
 - Sorted events Old → New  
@@ -165,3 +165,4 @@ _index:weblogs and client.ip:203.0.113.55 and http.request.method:GET and errorE
 - SOC escalation reporting  
 
 ---
+
