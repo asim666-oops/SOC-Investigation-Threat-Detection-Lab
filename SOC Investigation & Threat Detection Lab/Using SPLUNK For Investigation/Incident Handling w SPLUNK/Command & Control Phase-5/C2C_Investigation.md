@@ -1,4 +1,4 @@
-#  Command & Control Phase – C2 Infrastructure Investigation (`imreallynotbatman.com`)
+ #  Command & Control Phase – C2 Infrastructure Investigation (`imreallynotbatman.com`)
 
 ---
 
@@ -19,7 +19,7 @@ This phase focuses on:
 ```
 index=botsv1 sourcetype=fortigate_utm "poisonivy-is-coming-for-you-batman.jpeg"
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Command%20%26%20Control%20Phase-5/Screenshots/img2.jpeg)
 ###  Purpose
 - Identify firewall events associated with defacement artifact
 - Extract domain (FQDN) contacted by compromised server
@@ -41,7 +41,7 @@ prankglassinebracket.jumpingcrab.com
 ```
 index=botsv1 sourcetype=stream:http dest_ip=23.22.63.114 "poisonivy-is-coming-for-you-batman.jpeg" src_ip=192.168.250.70
 ```
-
+![Nmap Scan](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Command%20%26%20Control%20Phase-5/Screenshots/img3.jpeg)
 ###  Purpose
 - Confirm HTTP communication between compromised server and attacker IP
 - Validate artifact download source
@@ -105,5 +105,6 @@ index=botsv1 sourcetype=stream:http dest_ip=23.22.63.114 "poisonivy-is-coming-fo
 - Alert on abnormal web requests originating from servers
 - Deploy EDR + NDR correlation for C2 detection
 - Use threat intelligence feeds to block known malicious domains
+
 
 ---
