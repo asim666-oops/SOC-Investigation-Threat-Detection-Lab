@@ -20,7 +20,7 @@ From a SOC perspective, the goal is to identify suspicious scanning activity aga
 ```
 index=botsv1 imreallynotbatman.com
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Reconnaissance%20Phase-1/Screenshots/img1.jpeg)
 **Explanation:**  
 - Search all logs in index `botsv1` containing our target domain  
 - Time Range: **All Time**  
@@ -38,12 +38,7 @@ index=botsv1 imreallynotbatman.com
 ```
 index="botsv1" imreallynotbatman.com sourcetype="stream:http"
 ```
-
-**Alternative with top IPs:**  
-```
-index="botsv1" imreallynotbatman.com sourcetype="stream:http"
-| top src_ip
-```
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Reconnaissance%20Phase-1/Screenshots/img2.jpeg)
 
 **Findings:**  
 - Two main source IPs observed in the logs:  
@@ -62,7 +57,7 @@ index="botsv1" imreallynotbatman.com sourcetype="stream:http"
 ```
 index=botsv1 imreallynotbatman.com src=40.80.148.42 sourcetype=suricata
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Reconnaissance%20Phase-1/Screenshots/img5.jpeg)
 **Top Suricata Alerts Observed:**
 
 | Alert | Count | % |
@@ -90,7 +85,7 @@ index=botsv1 imreallynotbatman.com src=40.80.148.42 sourcetype=suricata
 index="botsv1" imreallynotbatman.com sourcetype="stream:http" src_ip="40.80.148.42"
 | table src_ip http_user_agent uri http_method
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Reconnaissance%20Phase-1/Screenshots/img3.jpeg)
 **Purpose:**  
 - Examine User-Agent strings  
 - Check accessed URIs  
@@ -158,5 +153,6 @@ Joomla
 - Alert on known CVE attempts against public-facing services  
 - Track unusual User-Agent strings for automated scanners  
 - Correlate network logs with Suricata signatures for real-time SOC alerts  
+
 
 ---
