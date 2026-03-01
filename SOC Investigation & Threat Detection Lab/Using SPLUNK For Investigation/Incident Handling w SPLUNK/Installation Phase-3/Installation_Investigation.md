@@ -40,7 +40,7 @@ To confirm upload origin:
 ```
 index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" "part_filename{}"="3791.exe"
 ```
-![Query]([link-to-image](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Installation%20Phase-3/Screenshots/img2.jpeg))
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Installation%20Phase-3/Screenshots/img2.jpeg)
 **Finding**
 - File uploaded from attacker infrastructure (confirmed via client IP field)
 
@@ -121,3 +121,4 @@ index=botsv1 "3791.exe" sourcetype="XmlWinEventLog" EventCode=1
 
 
 ---
+
