@@ -20,7 +20,7 @@ This phase investigates:
 ```
 index=botsv1 dest=192.168.250.70 sourcetype=suricata
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Action%20on%20Objective%20Phase-4/Screenshots/img1.jpeg)
 **Observation**
 - No meaningful external inbound traffic linked to defacement
 - Indicates attacker activity may involve outbound communication
@@ -33,7 +33,7 @@ index=botsv1 dest=192.168.250.70 sourcetype=suricata
 ```
 index=botsv1 src=192.168.250.70 sourcetype=suricata
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Action%20on%20Objective%20Phase-4/Screenshots/img2.jpeg)
 **Key Insight**
 - Web servers typically receive traffic, not initiate it
 - Multiple outbound connections observed to external IPs
@@ -47,7 +47,7 @@ index=botsv1 src=192.168.250.70 sourcetype=suricata
 ```
 index=botsv1 src=192.168.250.70 sourcetype=suricata dest_ip=23.22.63.114
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Action%20on%20Objective%20Phase-4/Screenshots/img3.jpeg)
 **Findings**
 - Communication with attacker-controlled host
 - URL field revealed:
@@ -63,7 +63,7 @@ index=botsv1 src=192.168.250.70 sourcetype=suricata dest_ip=23.22.63.114
 index=botsv1 url="/poisonivy-is-coming-for-you-batman.jpeg" dest_ip="192.168.250.70"
 | table _time src dest_ip http.hostname url
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Incident%20Handling%20w%20SPLUNK/Action%20on%20Objective%20Phase-4/Screenshots/img4.jpeg)
 **Conclusion**
 - Defacement image downloaded from attacker infrastructure
 - Malicious host:
@@ -125,5 +125,6 @@ Fortigate Firewall logs confirmed SQL injection activity.
 - Deploy WAF to block SQL injection attempts
 - Alert on suspicious media downloads by web servers
 - Harden CMS and plugin security
+
 
 ---
