@@ -39,17 +39,11 @@ The attacker successfully deployed and interacted with a web shell, achieving re
 - Flagged as malicious more than 3000 times (AbuseIPDB)
 - Associated with brute force and web exploitation campaigns
 - High confidence malicious reputation
-
+  
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Web%20Shell/Screenshots/IP%20Check.jpeg)
 This enrichment supports the malicious nature of the activity observed in SIEM logs.
 
 ---
-
-#  Investigation Methodology
-
-All investigation was conducted in Splunk using the `web-alert` index.
-
----
-
 ## 1️⃣ Initial Log Review
 
 ### Query
@@ -58,7 +52,7 @@ index=web-alert 171.251.232.40
 | table _time clientip uri_path useragent method status
 | sort +_time
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Web%20Shell/Screenshots/img1.jpeg)
 ### Findings
 
 - High volume of requests from single IP
@@ -79,7 +73,7 @@ Clear brute force attack attempt using Hydra against WordPress login.
 index=web-alert 171.251.232.40 useragent!="Mozilla/5.0 (Hydra)"
 | table _time clientip useragent uri_path referer referer_domain method status
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Web%20Shell/Screenshots/img2.jpeg)
 ### Findings
 
 - POST request to `admin-ajax.php`
@@ -105,7 +99,7 @@ index=web-alert 171.251.232.40 b374k.php
 | table _time clientip useragent uri_path referer referer_domain method status
 | sort +_time
 ```
-
+![Query](https://github.com/asim666-oops/SOC-Investigation-Threat-Detection-Lab/blob/main/SOC%20Investigation%20%26%20Threat%20Detection%20Lab/Using%20SPLUNK%20For%20Investigation/Web%20Shell/Screenshots/img3.jpeg)
 ### Findings
 
 - Access to `b374k.php`
@@ -143,18 +137,6 @@ This confirms that the activity observed represents full remote command executio
 
 ---
 
-#  Attack Timeline
-
-| Time (Chronological) | Activity |
-|----------------------|----------|
-| T1 | Hydra brute force attempts on wp-login.php |
-| T2 | Successful login observed |
-| T3 | Access to WordPress Theme Editor |
-| T4 | Reference to b374k.php |
-| T5 | POST requests to web shell |
-| T6 | Confirmed web shell interaction |
-
----
 
 #  MITRE ATT&CK Mapping
 
@@ -191,15 +173,6 @@ This incident should be treated as a confirmed security breach.
 
 ---
 
-# SOC Analyst Notes
-
-- Clear attack progression from brute force to web shell deployment
-- Logs did not capture initial upload method
-- Possible upload vectors:
-  - WordPress Theme Editor
-  - File upload plugin
-  - Vulnerable plugin exploitation
----
 
 #  Final Verdict
 
@@ -212,6 +185,7 @@ Severity: Critical
 Status: Confirmed Breach  
 
 ---
+
 
 
 
